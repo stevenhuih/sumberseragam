@@ -40,6 +40,7 @@ export default function BentoFeatures() {
           ref={scrollRef}
           onScroll={handleScroll}
           className="flex sm:grid flex-nowrap sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end overflow-x-auto overflow-y-hidden sm:overflow-x-visible snap-x snap-mandatory no-scrollbar -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           
           <Reveal className="min-w-[85vw] sm:min-w-0 snap-center">

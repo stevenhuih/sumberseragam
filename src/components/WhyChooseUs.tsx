@@ -141,7 +141,7 @@ export default function WhyChooseUs() {
             {/* Mobile Feature Carousel */}
             <div className="block lg:hidden w-full max-w-sm mx-auto z-10 text-center relative px-2">
               <div 
-                className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-0 -mx-4 px-4"
+                className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-0 -mx-4 px-4"
                 onScroll={handleScroll}
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
