@@ -1,19 +1,15 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Reveal from './Reveal';
 
 export default function BentoFeatures() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollNext = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth, scrollWidth } = scrollRef.current;
-      const nextScroll = scrollLeft + clientWidth;
-      
-      if (nextScroll >= scrollWidth - 10) {
-        scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        scrollRef.current.scrollTo({ left: nextScroll, behavior: 'smooth' });
-      }
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const index = Math.round(container.scrollLeft / (container.clientWidth * 0.85)); // 0.85 because of min-w-[85vw]
+    if (index !== activeIndex) {
+      setActiveIndex(index);
     }
   };
 
@@ -42,7 +38,9 @@ export default function BentoFeatures() {
 
         <div 
           ref={scrollRef}
-          className="flex sm:grid flex-nowrap sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory no-scrollbar -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth"
+          onScroll={handleScroll}
+          className="flex sm:grid flex-nowrap sm:grid-cols-2 lg:grid-cols-4 gap-6 items-end overflow-x-auto sm:overflow-x-visible snap-x snap-mandatory no-scrollbar -mx-6 px-6 sm:mx-0 sm:px-0 scroll-smooth touch-pan-x"
+          style={{ touchAction: 'pan-x' }}
         >
           
           <Reveal className="min-w-[85vw] sm:min-w-0 snap-center">
@@ -109,17 +107,26 @@ export default function BentoFeatures() {
 
         </div>
 
-        {/* Mobile Next Button */}
-        <div className="mt-12 flex sm:hidden justify-center">
-          <button 
-            onClick={scrollNext}
-            className="group flex items-center gap-3 px-8 py-3.5 border border-brand-900 text-brand-900 rounded-none text-[11px] font-bold uppercase tracking-[0.3em] transition-all hover:bg-brand-900 hover:text-white active:scale-95"
-          >
-            Selanjutnya
-            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        {/* Mobile Swipe Hint */}
+        <div className="flex sm:hidden flex-col items-center gap-2 animate-pulse mt-12">
+          <div className="flex items-center gap-3 text-brand-900/40">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" className="rotate-90 origin-center" />
             </svg>
-          </button>
+            <span className="text-[10px] uppercase font-bold tracking-[0.3em]">Swipe</span>
+          </div>
+        </div>
+
+        {/* Mobile Pagination Dots */}
+        <div className="flex sm:hidden items-center justify-center gap-2 mt-6">
+          {[...Array(4)].map((_, idx) => (
+            <div 
+              key={idx} 
+              className={`h-1 rounded-full transition-all duration-300 ${
+                activeIndex === idx ? 'w-8 bg-brand-900' : 'w-2 bg-brand-200'
+              }`} 
+            />
+          ))}
         </div>
       </div>
     </section>
