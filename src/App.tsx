@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import WhyChooseUs from './components/WhyChooseUs';
@@ -40,6 +41,7 @@ function App() {
   return (
     <div className="font-sans min-h-screen bg-background text-foreground selection:bg-brand-900 selection:text-white scroll-smooth flex flex-col items-stretch">
       <SpeedInsights />
+      <Analytics />
       <ScrollToTop />
       <Navigation />
       
