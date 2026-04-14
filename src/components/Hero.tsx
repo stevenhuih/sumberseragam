@@ -6,6 +6,8 @@ export default function Hero() {
           className="absolute inset-0 object-cover w-full h-full"
           alt="Modern Textile Showroom"
           src="/hero-image.png"
+          fetchPriority="high"
+          decoding="sync"
         />
 
         <div className="absolute inset-0 bg-black/40 z-0 mix-blend-multiply" />

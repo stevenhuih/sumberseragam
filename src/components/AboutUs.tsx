@@ -3,10 +3,10 @@ import Reveal from './Reveal';
 
 export default function AboutUs() {
   return (
-    <section id="about" className="py-32 bg-background px-6">
+    <section id="about" className="py-16 lg:py-32 bg-background px-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         
-        <Reveal className="order-2 lg:order-1 flex flex-col items-start pr-0 lg:pr-8">
+        <Reveal className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left pr-0 lg:pr-8">
           <h2 className="text-5xl font-display font-light text-brand-900 mb-3">
             Misi Kami
           </h2>
@@ -15,7 +15,7 @@ export default function AboutUs() {
             Dirancang untuk Keunggulan. Ditenun untuk Kenyamanan.
           </h3>
 
-          <p className="text-brand-600/80 leading-relaxed text-[15px] font-light mb-10 max-w-[540px]">
+          <p className="text-brand-600/80 leading-relaxed text-[15px] font-light mb-10 max-w-[540px] mx-auto lg:mx-0">
             Dipercaya oleh Brand Global Sejak 2000. Seragam tim Anda harus memberdayakan mereka, bukan menghambat. Selama lebih dari dua dekade, Sanso (Uniform Source) telah memasok kain premium berkualitas tinggi ke berbagai bisnis di Indonesia, Singapura, dan Timur Tengah. Dengan lebih dari 378 pilihan warna eksklusif, kami menyediakan tekstil yang Anda butuhkan untuk membangun identitas profesional yang seragam dengan kenyamanan tak tertandingi.
           </p>
 
@@ -30,6 +30,8 @@ export default function AboutUs() {
               src="/mission-image.png" 
               alt="Sumber Seragam Mission" 
               className="object-cover w-full h-full"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </Reveal>

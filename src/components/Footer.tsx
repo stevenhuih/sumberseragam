@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-brand-900 text-white py-20 px-6 font-sans">
+    <footer id="contact" className="bg-brand-900 text-white py-12 lg:py-20 px-6 font-sans">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 border-b border-white/10 pb-16">
         <div>
           <h4 className="text-2xl font-display font-semibold mb-6 tracking-tight text-white flex items-center gap-1">SUMBER SERAGAM<span className="text-xs align-top text-white/60">&reg;</span></h4>
