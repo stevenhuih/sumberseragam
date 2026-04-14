@@ -180,7 +180,7 @@ export default function CatalogGrid() {
             className="relative w-full max-w-5xl bg-background shadow-2xl overflow-hidden flex flex-col md:flex-row mt-12 sm:mt-0 rounded-sm modal-enter"
             onClick={e => e.stopPropagation()}
           >
-            <div className="w-full md:w-[55%] aspect-4/5 md:aspect-auto relative overflow-hidden bg-white">
+            <div className="hidden md:block w-full md:w-[55%] aspect-4/5 md:aspect-auto relative overflow-hidden bg-white">
                 <img 
                   src={selectedProduct.image} 
                   alt={selectedProduct.name} 
