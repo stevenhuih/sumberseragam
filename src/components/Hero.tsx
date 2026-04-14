@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <div className="bg-[#111]">
-      <div className="relative min-h-[95vh] w-full overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[4rem] bg-black">
+      <div className="relative min-h-[95vh] w-full overflow-hidden bg-black">
         <img
           className="absolute inset-0 object-cover w-full h-full"
           alt="Modern Textile Showroom"
