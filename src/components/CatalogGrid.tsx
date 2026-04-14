@@ -63,6 +63,15 @@ export default function CatalogGrid() {
     }, 400); 
   };
 
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    if (window.innerWidth >= 640) return;
+    const container = e.currentTarget;
+    const index = Math.round(container.scrollLeft / container.clientWidth);
+    if (index !== currentPage) {
+      setCurrentPage(index);
+    }
+  };
+
   const handlePageJump = (pageIndex: number) => {
     if (isAnimating || pageIndex === currentPage) return;
     setIsAnimating(true);
@@ -91,7 +100,7 @@ export default function CatalogGrid() {
         
         <Reveal>
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-6 mt-8 mb-6">
+            <div className="hidden sm:flex items-center justify-center gap-6 mt-8 mb-6">
               <button 
                 onClick={() => handlePageChange('prev')}
                 className="w-10 h-10 rounded-full bg-[#212529] text-white flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-md focus:outline-none"
@@ -106,7 +115,7 @@ export default function CatalogGrid() {
                     key={idx}
                     onClick={() => handlePageJump(idx)}
                     className={`h-2 transition-all duration-300 rounded-full focus:outline-none ${
-                      currentPage === idx 
+                        currentPage === idx 
                         ? 'w-8 bg-[#212529]' 
                         : 'w-2 bg-[#212529]/30 hover:bg-[#212529]/50'
                     }`}
@@ -126,9 +135,49 @@ export default function CatalogGrid() {
           )}
 
           <div className="mt-2 text-center">
-            <div className="min-h-[600px]">
+            <div className="min-h-[450px] sm:min-h-[600px]">
+              {/* Mobile View: Scrollable List */}
               <div 
-                className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 pt-8 pb-12 px-4 transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu ${
+                className="flex sm:hidden overflow-x-auto snap-x snap-mandatory scrollbar-none gap-6 -mx-6 px-6 pt-8 pb-12"
+                onScroll={handleScroll}
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {catalogs.map((item) => (
+                  <div 
+                    key={item.id} 
+                    className="min-w-[85vw] snap-center relative group/card cursor-pointer flex flex-col"
+                    onClick={() => setSelectedProduct(item)}
+                  >
+                    <div className="relative w-full aspect-7/10 bg-[#ECE8D9] z-10 overflow-hidden rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.08)]">
+                      <div className="w-full h-full p-3 pt-3">
+                        <img 
+                          src={item.image} 
+                          alt={item.name} 
+                          className="w-full h-full object-cover object-top rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.1)]"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="w-full bg-[#5a5a5a] z-0 rounded-b-2xl shadow-[0_15px_30px_-5px_rgba(0,0,0,0.15)] relative">
+                      <div className="p-5 text-center bg-[#5a5a5a] relative rounded-b-2xl">
+                        <p className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-white/70 mb-2">
+                          {item.headline}
+                        </p>
+                        <div className="w-6 h-px bg-white/20 mx-auto mb-2"></div>
+                        <h3 className="text-lg font-display font-medium text-white tracking-wide">
+                          {item.name}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop View: Grid Slice */}
+              <div 
+                className={`hidden sm:grid grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 pt-8 pb-12 transition-all duration-400 ease-[cubic-bezier(0.25,1,0.5,1)] transform-gpu ${
                   isAnimating ? 'opacity-0 scale-[0.98] blur-[2px]' : 'opacity-100 scale-100 blur-0'
                 }`}
               >
@@ -139,7 +188,7 @@ export default function CatalogGrid() {
                     onClick={() => setSelectedProduct(item)}
                   >
                     <div className="relative w-full aspect-7/10 bg-[#ECE8D9] z-10 overflow-hidden rounded-2xl group-hover/card:rounded-b-none shadow-[0_4px_12px_rgba(0,0,0,0.08)] transform-gpu transition-all duration-500 ease-out group-hover/card:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
-                      <div className="w-full h-full p-2 sm:p-2.5 pt-2.5 transition-transform duration-500 ease-out group-hover/card:-translate-y-2">
+                      <div className="w-full h-full p-2.5 pt-2.5 transition-transform duration-500 ease-out group-hover/card:-translate-y-2">
                         <img 
                           src={item.image} 
                           alt={item.name} 
@@ -164,6 +213,18 @@ export default function CatalogGrid() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Mobile Pagination Dots */}
+            <div className="flex sm:hidden items-center justify-center gap-2 mt-4">
+              {catalogs.map((_, idx) => (
+                <div 
+                  key={idx} 
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    currentPage === idx ? 'w-8 bg-brand-900' : 'w-2 bg-brand-200'
+                  }`} 
+                />
+              ))}
             </div>
           </div>
         </Reveal>

@@ -44,6 +44,14 @@ export default function WhyChooseUs() {
     setCurrentFeatureIndex((prev) => (prev + 1) % brandFeatures.length);
   };
 
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const index = Math.round(container.scrollLeft / container.clientWidth);
+    if (index !== currentFeatureIndex) {
+      setCurrentFeatureIndex(index);
+    }
+  };
+
   return (
     <>
       <section className="py-16 lg:py-32 bg-background text-foreground overflow-hidden">
@@ -134,33 +142,31 @@ export default function WhyChooseUs() {
             </div>
 
             {/* Mobile Feature Carousel */}
-            <div className="block lg:hidden w-full max-w-sm mx-auto z-10 text-center">
-              <Reveal key={currentFeatureIndex} animation="fade-up">
-                <div className="flex flex-col items-center py-4">
-                  <div className="w-12 h-12 flex items-center justify-center text-brand-900 mb-6 rounded-[12px] border border-brand-200 bg-white shadow-md">
-                    {brandFeatures[currentFeatureIndex].icon}
+            <div className="block lg:hidden w-full max-w-sm mx-auto z-10 text-center relative px-2">
+              <div 
+                className="flex overflow-x-auto snap-x snap-mandatory scrollbar-none gap-0 -mx-4 px-4"
+                onScroll={handleScroll}
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {brandFeatures.map((feature, i) => (
+                  <div key={i} className="min-w-full snap-center px-4">
+                    <div className="flex flex-col items-center py-4">
+                      <div className="w-12 h-12 flex items-center justify-center text-brand-900 mb-6 rounded-[12px] border border-brand-200 bg-white shadow-md">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-2xl font-display font-medium mb-4 text-brand-900 leading-tight">
+                        {feature.title}
+                      </h3>
+                      <p className="text-brand-600/80 text-[15px] leading-relaxed font-medium px-4">
+                        {feature.desc}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-display font-medium mb-4 text-brand-900 leading-tight">
-                    {brandFeatures[currentFeatureIndex].title}
-                  </h3>
-                  <p className="text-brand-600/80 text-[15px] leading-relaxed font-medium px-4">
-                    {brandFeatures[currentFeatureIndex].desc}
-                  </p>
-                </div>
-              </Reveal>
+                ))}
+              </div>
               
-              <div className="mt-12 flex flex-col items-center">
-                <button 
-                  onClick={nextFeature}
-                  className="group flex items-center gap-3 px-8 py-3.5 border border-brand-900 text-brand-900 rounded-none text-[11px] font-bold uppercase tracking-[0.3em] transition-all hover:bg-brand-900 hover:text-white active:scale-95"
-                >
-                  Selanjutnya
-                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
-                
-                <div className="mt-8 flex gap-2">
+              <div className="mt-8 flex flex-col items-center">
+                <div className="flex gap-2">
                   {brandFeatures.map((_, i) => (
                     <div 
                       key={i} 
