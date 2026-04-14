@@ -215,6 +215,16 @@ export default function CatalogGrid() {
               </div>
             </div>
 
+            {/* Mobile Swipe Hint */}
+            <div className="flex sm:hidden flex-col items-center gap-2 animate-pulse mt-4">
+              <div className="flex items-center gap-3 text-brand-900/40">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" className="rotate-90 origin-center" />
+                </svg>
+                <span className="text-[10px] uppercase font-bold tracking-[0.3em]">Swipe</span>
+              </div>
+            </div>
+
             {/* Mobile Pagination Dots */}
             <div className="flex sm:hidden items-center justify-center gap-2 mt-4">
               {catalogs.map((_, idx) => (
