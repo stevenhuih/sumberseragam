@@ -23,7 +23,7 @@ export default function ContactForm() {
           src="/contact_hero_machinery_1775640981135.png" 
           alt="Contact Hero" 
           className="absolute inset-0 w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
         />
         <div className="absolute inset-0 bg-brand-900/40" />
