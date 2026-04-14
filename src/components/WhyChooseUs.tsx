@@ -215,7 +215,7 @@ export default function WhyChooseUs() {
 
                 <div className="w-full flex flex-col justify-center relative z-20">
                   <p className="text-brand-900 text-sm leading-relaxed font-light mb-6 italic">
-                    "Sangat suka dengan kualitas kainnya! Tekstur tenunan yang indah dan rapat, serta presentasi yang luar biasa. Tim sangat membantu merekomendasikan campuran yang sempurna untuk kebutuhan korporat."
+                    "Sangat suka dengan kualitas kainnya! Tekstur tenunan yang indah dan rapat, serta presentasi yang luar biasa."
                   </p>
                   <div className="flex gap-1.5 mb-4 text-[#F59E0B]">
                     {[...Array(5)].map((_, i) => (
