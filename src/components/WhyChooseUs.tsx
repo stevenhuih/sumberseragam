@@ -40,9 +40,6 @@ export default function WhyChooseUs() {
     setActiveFaq(activeFaq === index ? null : index);
   };
 
-  const nextFeature = () => {
-    setCurrentFeatureIndex((prev) => (prev + 1) % brandFeatures.length);
-  };
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const container = e.currentTarget;
