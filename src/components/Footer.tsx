@@ -44,7 +44,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="pt-8 border-t border-white/5 w-full flex flex-col items-center">
+        <div className="pt-8 w-full flex flex-col items-center">
           <p className="mb-4">&copy; {new Date().getFullYear()} SUMBER SERAGAM. Hak cipta dilindungi undang-undang.</p>
           <div className="flex justify-center space-x-10">
             <a href="#" className="hover:text-white transition-colors">Kebijakan Privasi</a>
