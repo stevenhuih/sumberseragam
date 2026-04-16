@@ -1,73 +1,26 @@
-# React + TypeScript + Vite
+# SUMBER SERAGAM | Premium Industrial Textiles
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance B2B fabric catalog and digital showroom built for **Sumber Seragam**, a leading textile distributor in Indonesia. This project showcases a "Luxury Industrial" aesthetic, blending technical durability with premium digital craftsmanship.
 
-Currently, two official plugins are available:
+[Live Portfolio View](https://www.stevenac.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎨 Design Philosophy
+The application follows a **Luxury Industrial** design system, characterized by:
+- **High-Contrast Minimalism**: Deep blacks, architectural whites, and technical brand accents.
+- **Cinematic Experience**: Framer Motion-powered "reveal" transitions and immersive video backgrounds.
+- **Precision Typography**: Minimalist display fonts paired with a legible technical sans-serif.
 
-## React Compiler
+## 🛠️ Technical Craftsmanship
+- **React 19 & TypeScript**: Leveraging the latest React features for a type-safe, modular architecture.
+- **Native Gesture Navigation**: Custom-built horizontal swiping using CSS Scroll Snap and real-time scroll synchronization for mobile users.
+- **High-Performance Assets**: Optimized image delivery with modern formats and layout-shift prevention.
+- **Zero-Dependency Core**: Built with custom Tailwind CSS utilities to minimize bundle size while maximizing aesthetic flexibility.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📱 Mobile-First Features
+- **Swipe-to-Browse**: Intuitive swipe gestures for all catalogs and feature grids.
+- **Context-Aware Modals**: Intelligent detail views that adapt to screen real estate, prioritizing content hierarchy on smaller devices.
+- **Liquid Typography**: Scaling text systems that maintain visual impact from ultra-wide monitors to handheld displays.
 
-## Expanding the ESLint configuration
+---
+**Crafted with care by [Steven AC](https://www.stevenac.com)**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```

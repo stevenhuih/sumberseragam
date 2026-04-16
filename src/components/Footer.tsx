@@ -26,9 +26,28 @@ export default function Footer() {
       </div>
       <div className="max-w-7xl mx-auto pt-10 flex flex-col items-center text-center text-[10px] text-white/30 uppercase tracking-[0.2em] font-bold">
         <p className="mb-4">&copy; {new Date().getFullYear()} SUMBER SERAGAM. Hak cipta dilindungi undang-undang.</p>
-        <div className="flex space-x-10">
+        <div className="flex space-x-10 mb-8">
           <a href="#" className="hover:text-white transition-colors">Kebijakan Privasi</a>
           <a href="#" className="hover:text-white transition-colors">Ketentuan Layanan</a>
+        </div>
+
+        {/* Crafted by Steven AC - www.stevenac.com */}
+        <div className="mt-4 pt-8 border-t border-white/5 w-full flex flex-col items-center">
+          <span className="text-[9px] mb-3 opacity-40 font-light tracking-[0.4em]">Website Crafted By</span>
+          <a 
+            href="https://www.stevenac.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group flex flex-col items-center transition-all duration-500 hover:scale-105"
+          >
+            <div className="relative">
+              <img 
+                src="/steven-signature.png" 
+                alt="Steven AC" 
+                className="h-12 opacity-20 filter invert group-hover:opacity-80 transition-all duration-700" 
+              /> 
+            </div>
+          </a>
         </div>
       </div>
     </footer>
